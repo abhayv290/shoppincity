@@ -5,7 +5,8 @@ export default function Document() {
   return (
     <Html lang="en">
       <Head>
-        <script src="https://kit.fontawesome.com/3e87cae5ed.js" crossorigin="anonymous"></script>
+        <script src="https://kit.fontawesome.com/3e87cae5ed.js" crossOrigin="anonymous"></script>
+        <link rel="shortcut icon" href="/public/favicon1.ico" type="image/x-icon" />
       </Head>
       <body>
         <Main />
