@@ -27,7 +27,7 @@ export default function Navbar() {
                 <nav className="md:ml-auto max-sm:hidden  md:mr-auto flex flex-wrap items-center text-base justify-center font-bold">
                     <Link href={'/Tshirts'} className={`${pathname === '/Tshirts' ? 'text-red-600 font-extra-bold' : ""} mr-5 hover:text-gray-900`}>Tshirts</Link>
                     <Link href={'/Hoodies'} className={`${pathname === '/Hoodies' ? 'text-red-600 font-extra-bold' : ""} mr-5 hover:text-gray-900`}>Hoodies</Link>
-                    <Link href={'/'} className={`${pathname === '/Mugs' ? 'text-red-600 font-extra-bold' : ""}  mr-5 hover:text-gray-900   `}>Mugs</Link>
+                    <Link href={'/Mugs'} className={`${pathname === '/Mugs' ? 'text-red-600 font-extra-bold' : ""}  mr-5 hover:text-gray-900   `}>Mugs</Link>
                     <Link href={'/Bags'} className="mr-5 hover:text-gray-900">Bags</Link>
                     <div className="relative  inline-block text-left">
                         <button onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
