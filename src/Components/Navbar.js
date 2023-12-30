@@ -47,7 +47,7 @@ export default function Navbar() {
 
                 </nav>
                 <div className=" relative left-6 md:-left-2 rounded-md ">
-                    <span><i className="text-red-700 fa-regular px-2 text-4xl fa-heart"></i></span>
+                    <span><i className="text-red-600 fa-regular px-2 text-4xl fa-heart"></i></span>
                     <span><i className="fa-solid fa-cart-arrow-down px-2 text-4xl"></i></span>
                 </div>
             </div>

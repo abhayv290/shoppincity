@@ -1,11 +1,35 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useRouter } from 'next/router'
 import Image from 'next/image';
+
 import tshirt1 from '../../Assests/tshirt1_.jpg'
+
 
 const Post = () => {
     const router = useRouter();
     const { slug } = router.query;
+    const [ pin, setPin ] = useState()
+    const [ service, setService ] = useState(null);
+
+    const onChange = (e) => {
+        setPin(e.target.value);
+    }
+    const checkAvailibility = async () => {
+        let mypin = await fetch('http://localhost:3000/api/pincode');
+        let pinJson = await mypin.json();
+        // console.log(pinJson);
+
+        if (pin && pinJson && pinJson.includes(parseInt(pin))) {
+            setService(true);
+        }
+
+        else {
+            setService(false);
+        }
+        // console.log(service);
+    }
+
+
     return (
         <div>
             <section className="text-gray-600 body-font overflow-hidden">
@@ -87,12 +111,24 @@ const Post = () => {
                                 <span className="title-font font-medium text-2xl text-gray-900">$58.00</span>
                                 <button className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Add to Cart</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
-                                    <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24">
+                                    <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5 text-red-600" viewBox="0 0 24 24">
                                         <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
                                     </svg>
                                 </button>
                             </div>
+
+                            <div className="flex ">
+                                <input onChange={onChange} id='pin' type="text" placeholder='Enter your pincode here' className='bg-grey-200 max-sm:text-lg md:p-1 max-sm:w-48 max-sm:px-3 border-indigo-300 border-2 rounded-md ' />
+                                <button onClick={checkAvailibility} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Check for Availibilty</button>
+                            </div>
+                            {(!service && service != null) && <div className='text-red-500 text-sm mt-2'>
+                                Sorry! We cannot deliver to this pincode </div>}
+
+                            {(service && service != null) && <div className='text-green-500 text-sm mt-2'>
+                                Yay! This Product is available at your pincode </div>
+                            }
                         </div>
+
                     </div>
                 </div>
             </section>
