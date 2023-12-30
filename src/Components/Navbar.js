@@ -18,7 +18,7 @@ export default function Navbar() {
 
     return (
         <header className="text-gray-500 body-font shadow-lg shadow-slate-200 sticky top-0 z-10 bg-white">
-            <div className="container mx-auto flex flex-wrap p-5 md:flex-row md:items-center">
+            <div className="container mx-auto flex flex-wrap p-2 md:p-4 flex-row md:items-center">
                 <Link href={'/'} className={`${pathname === '/' ? 'text-red-600 font-extra-bold' : ""} flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0`}>
                     <Image className='rounded-md' src={shoppincity} width={50} height={50} alt='brand_logo' />
                     <span className="ml-3 text-xl">  <Image src={shoppin} width={150} height={150} alt='brandname'></Image></span>
@@ -46,7 +46,7 @@ export default function Navbar() {
                     </div>
 
                 </nav>
-                <div className=" relative left-16 md:-left-2 rounded-md ">
+                <div className=" relative left-6 md:-left-2 rounded-md ">
                     <span><i className="text-red-700 fa-regular px-2 text-4xl fa-heart"></i></span>
                     <span><i className="fa-solid fa-cart-arrow-down px-2 text-4xl"></i></span>
                 </div>

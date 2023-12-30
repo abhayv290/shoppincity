@@ -8,7 +8,7 @@ export default function Mugs() {
         <div>
             <section className="text-gray-600 body-font">
                 <div className="container 5 py-24 mx-auto">
-                    <div className="flex flex-wrap -">
+                    <div className="flex flex-wrap -m-4">
                         <div className="lg:w-1/4 md:w-1/3 max-sm:m-4  p-8 shadow  shadow-gray-200  w-5/12">
                             <Link href={'/'} className="block relative h-70 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="  block" src={mug} /></Link>
