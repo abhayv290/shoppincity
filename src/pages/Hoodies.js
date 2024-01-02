@@ -140,16 +140,7 @@ export default function Hoodies() {
                             </div>
                         </div>
 
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 w-full">
-                            <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
-                                <Image alt="ecommerce" className="object-cover object-center w-full h-full block" src={''} />
-                            </Link>
-                            <div className="mt-4">
-                                <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">CATEGORY</h3>
-                                <h2 className="text-gray-900 title-font text-lg font-medium">The 400 Blows</h2>
-                                <p className="mt-1">$18.40</p>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </section>
