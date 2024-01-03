@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import React, {useState} from 'react';
+import React, {useState, useEffect, useRef} from 'react';
 import shoppincity from '/src/Assests/BrandLogo.png'
 import shoppin from '../../public/sh.png'
 import Link from 'next/link'
@@ -8,7 +8,7 @@ import Cart from './Cart'
 import Sidebar from './Sidebar'
 
 
-// import { useEffect, useState } from 'react'
+
 export default function Navbar({cart, handleQuantityChange, addToCart, clearCart, subTotal}) {
 
     function toggleDropdown() {
@@ -16,13 +16,31 @@ export default function Navbar({cart, handleQuantityChange, addToCart, clearCart
         dropdown.classList.toggle("hidden");
     }
     const [isOpen, setIsOpen] = useState(false);
+    const sidebarRef = useRef(null);
+    useEffect(() => {
+        const handleOutsideClick = (event) => {
+            // Check if the clicked element is outside the sidebar
+            if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
+                setIsOpen(false);
+            }
+        };
+
+        
+        document.addEventListener('click', handleOutsideClick);
+
+        // Cleanup the event listener on component unmount
+        return () => {
+            document.removeEventListener('click', handleOutsideClick);
+        };
+    }, []);
 
     const toggleSidebar = () => {
         setIsOpen(!isOpen);
     };
     // function toggleSide() {
     //     let side = document.getElementById("side");
-    //     side.classList.toggle("hidden");
+    //     side.classList.remove("max-sm:-translate-x-full")
+    //     side.classList.add("max-sm:-translate-x-0");
     // }
     const pathname = usePathname();
     // console.log(pathname);
@@ -58,14 +76,14 @@ export default function Navbar({cart, handleQuantityChange, addToCart, clearCart
                 </Link>
 
 
-                <nav className="md:ml-auto max-sm:hidden  md:mr-auto flex flex-wrap items-center text-base justify-center font-bold">
+                <nav ref={sidebarRef} id='side' className={`md:ml-auto max-sm:absolute max-sm:left-0 max-sm:top-0 opacity-90 max-sm:flex-col md:mr-auto max-sm:bg-indigo-400 flex flex-wrap max-sm:h-screen max-sm:py-20 max-sm:w-60% items-center text-base md:justify-center font-bold max-sm:space-y-10  max-sm:transition-transform ${isOpen ? 'max-sm:translate-x-0' : 'max-sm:-translate-x-full'} ${isOpen ? 'open' : 'closed'} `}>
                     <Link href={'/Tshirts'} className={`${pathname === '/Tshirts' ? 'text-indigo-600 font-extra-bold' : ""} mr-5 hover:text-indigo-900`}>Tshirts</Link>
                     <Link href={'/Hoodies'} className={`${pathname === '/Hoodies' ? 'text-indigo-600 font-extra-bold' : ""} mr-5 hover:text-indigo-900`}>Hoodies</Link>
                     <Link href={'/Mugs'} className={`${pathname === '/Mugs' ? 'text-indigo-600 font-extra-bold' : ""}  mr-5 hover:text-indigo-900   `}>Mugs</Link>
                     <Link href={'/Bags'} className="mr-5 hover:text-indigo-900">Bags</Link>
                     <div className="relative  inline-block text-left">
                         <button onClick={toggleDropdown} className="inline-flex items-center justify-center p-2 text-gray-500 hover:text-gray-700 focus:outline-none focus:text-gray-700">
-                            <span>Menu</span>
+                            <span>MyAccount</span>
 
                             <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path>
@@ -73,13 +91,13 @@ export default function Navbar({cart, handleQuantityChange, addToCart, clearCart
                         </button>
                         <div id='dropdown' className=" absolute right-0 mt-2 space-y-2 bg-white hidden border border-gray-200 rounded-md shadow-lg">
 
-                            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300">Item 1</Link>
-                            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300">Item 2</Link>
+                            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300">Login</Link>
+                            <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300"></Link>
                             <Link href={'/'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300">Item 3</Link>
                         </div>
                     </div>
-
                 </nav>
+
                 <div className=" relative left-6 md:-left-2 rounded-md cursor-pointer ">
                     <span><i className="text-indigo-600 fa-regular px-2 text-4xl fa-heart"></i></span>
                     <span onClick={toggleCart} ><i className="fa-solid fa-cart-arrow-down px-2 text-4xl"></i></span>
