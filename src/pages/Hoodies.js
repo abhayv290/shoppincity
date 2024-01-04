@@ -7,9 +7,9 @@ export default function Hoodies() {
     return (
         <div>
             <section className="text-gray-600 body-font">
-                <div className="container 5 py-24 mx-auto">
-                    <div className="flex flex-wrap  m-4">
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4  p-4 shadow  shadow-gray-200 w-5/12">
+                <div className="container 5 py-12 mx-auto">
+                    <div className="flex flex-wrap ">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4  p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="  block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -19,7 +19,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4  p-4  shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4  p-4  shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -29,7 +29,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -39,7 +39,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -49,7 +49,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -59,7 +59,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -69,7 +69,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -79,7 +79,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -89,7 +89,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -99,7 +99,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -109,7 +109,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -119,7 +119,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">
@@ -129,7 +129,7 @@ export default function Hoodies() {
                                 <p>Size-S,M,X,XL,XXL</p>
                             </div>
                         </div>
-                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-5/12">
+                        <div className="lg:w-1/4 md:w-1/3 max-sm:m-4   p-4 shadow  shadow-gray-200 w-2/5">
                             <Link href={'/'} className="block relative h-48 rounded overflow-hidden">
                                 <Image alt="ecommerce" className="block" src={hoodies} /></Link>
                             <div className="mt-4">

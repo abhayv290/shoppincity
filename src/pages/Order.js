@@ -5,22 +5,49 @@ const Order = () => {
     return (
 
         <section className="text-gray-600 body-font">
-            <div className="container mx-auto flex px-5 py-24 md:flex-row flex-col items-center">
-                <div className="lg:max-w-lg lg:w-full md:w-1/2 w-5/6 mb-10 md:mb-0">
-                    <img className="object-cover object-center rounded" alt="hero" src="https://dummyimage.com/720x600" />
-                </div>
-                <div className="lg:flex-grow md:w-1/2 lg:pl-24 md:pl-16 flex flex-col md:items-start md:text-left items-center text-center">
-                    <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-gray-900">Before they sold out
-                        <br className="hidden lg:inline-block" />readymade gluten
-                    </h1>
-                    <p className="mb-8 leading-relaxed">Copper mug try-hard pitchfork pour-over freegan heirloom neutra air plant cold-pressed tacos poke beard tote bag. Heirloom echo park mlkshk tote bag selvage hot chicken authentic tumeric truffaut hexagon try-hard chambray.</p>
-                    <div className="flex justify-center">
-                        <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">Button</button>
-                        <button className="ml-4 inline-flex text-gray-700 bg-gray-100 border-0 py-2 px-6 focus:outline-none hover:bg-gray-200 rounded text-lg">Button</button>
+            <div className="container px-5 py-12 mx-auto flex flex-wrap max-sm:flex-col-reverse ">
+
+                <div className="sm:w-1/2 mb-10  px-4">
+                    <div className="rounded-lg h-72 overflow-hidden">
+                        <img alt="content" className="object-cover object-center h-50% w-50%" src="https://dummyimage.com/501x501" />
+                    </div>
+                       
+                    <div className="flex flex-col m-6 lg:items-start items-center">
+                        <div className="flex-grow">
+                            <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Shipping Address <i className='fas fa-shipping-fast'></i></h2>
+                            <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                            <a className="mt-3 text-indigo-500 inline-flex items-center">Track your Order
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
                     </div>
                 </div>
+
+                <div className="flex flex-col flex-wrap lg:py-6 -mb-10 md:w-1/2 lg:pl-12 md:text-left text-center">
+                    <div className="flex flex-col mb-10 md:items-start items-center">
+                        
+                        <div className="flex-grow rounded-md  ">
+                            <h3 className="text-gray-900 text-lg title-font font-medium mb-3">Order Id: <span className='text-red-600'> #34234</span></h3>
+                            <h2 className="text-gray-900 text-lg title-font font-medium mb-3">Brand Name</h2>
+                            <p className='text-black'>Size: M  color: red </p>
+                           
+                            <h3 className="text-gray-900 text-lg title-font font-medium mb-3">Price total: ₹500 <span className='text-sm text-red-500'>cash on delivery</span> </h3>
+                            
+                            <p className="leading-relaxed text-base">Blue bottle crucifix vinyl post-ironic four dollar toast vegan taxidermy. Gastropub indxgo juice poutine.</p>
+                            <a className="mt-3 text-indigo-500 inline-flex items-center">Learn More
+                                <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 ml-2" viewBox="0 0 24 24">
+                                    <path d="M5 12h14M12 5l7 7-7 7"></path>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+
+
+                </div>
             </div>
-        </section>
+        </section>          
     )
 }
 
