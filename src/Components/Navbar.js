@@ -113,7 +113,7 @@ export default function Navbar({cart, handleQuantityChange, addToCart, clearCart
                             id="dropdown"
                             className=" absolute right-0 mt-2 space-y-2 bg-white hidden border border-gray-200 rounded-md shadow-lg">
                             <Link href={'/Login'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300">
-                                <i class="fa-solid fa-user px-1"></i>  Login
+                                <i className="fa-solid fa-user px-1"></i>  Login
                             </Link>
                             <Link href={'/Signup'} className="block px-4 py-2 text-sm text-gray-700 hover:bg-blue-300"> <i class="fa-solid fa-user px-1"></i>Signup</Link>
 
