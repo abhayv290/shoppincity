@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-main().catch(err => console.log(err));
+
 
 //Creating Schemas for the Product Page
 

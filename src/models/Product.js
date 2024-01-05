@@ -1,12 +1,11 @@
 const mongoose = require('mongoose');
 
-main().catch(err => console.log(err));
 
 //Creating Schemas for the Product Page
 
 const ProductSchema = new mongoose.Schema({
     title: {type: String, required: true},
-    slug: {type: String, required: true, unique: true},
+    slug: {type: String, required: true, unique: true, dropDups: true},
     desc: {type: String, required: true},
     img: {type: String, required: true},
     category: {type: String, required: true},
@@ -17,8 +16,8 @@ const ProductSchema = new mongoose.Schema({
 
 }, {timestamps: true})
 
-
-const Product = mongoose.model("Product", OrderSchema);
+mongoose.models = {};
+const Product = mongoose.model("Product", ProductSchema);
 
 export default Product
 
