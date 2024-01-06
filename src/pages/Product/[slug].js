@@ -5,9 +5,14 @@ import Image from 'next/image';
 import tshirt1 from '../../Assests/tshirt1_.jpg'
 
 
-const Post = ({addToCart}) => {
+const Post = ({addToCart, Products, variants}) => {
+
+
+    //To get slug via userouter
     const router = useRouter();
     const {slug} = router.query;
+    // console.log(slug);
+
 
     const [pin, setPin] = useState()
     const [service, setService] = useState(null);
@@ -15,31 +20,27 @@ const Post = ({addToCart}) => {
     const onChange = (e) => {
         setPin(e.target.value);
     }
+    //Function for Check the Product availibility at your area_pincode
     const checkAvailibility = async () => {
         let mypin = await fetch('http://localhost:3000/api/pincode');
         let pinJson = await mypin.json();
         // console.log(pinJson);
-
-        if (pin && pinJson && pinJson.includes(parseInt(pin))) {
-            setService(true);
-        }
-
-        else {
-            setService(false);
-        }
+        (pin && pinJson && pinJson.includes(parseInt(pin))) ? setService(true) : setService(false);
         // console.log(service)
     }
+
 
 
     return (
         <div>
             <section className="text-gray-600 body-font overflow-hidden">
+
                 <div className="container px-5 py-12 mx-auto">
                     <div className="lg:w-4/5 mx-auto flex flex-wrap">
-                        <Image alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-12 md:px-24 rounded" src={tshirt1} />
+                        <img alt="ecommerce" className="lg:w-1/2 w-full lg:h-auto px-12 md:px-24 rounded" src={Products.img} />
                         <div className="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
-                            <h2 className="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+                            <h2 className="text-sm title-font text-gray-500 tracking-widest">{Products.title}</h2>
+                            <h1 className="text-gray-900 text-3xl title-font font-medium mb-1">{Products.desc}</h1>
                             <div className="flex mb-4">
                                 <span className="flex items-center">
                                     <svg fill="currentColor" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4 text-indigo-500" viewBox="0 0 24 24">
@@ -80,18 +81,20 @@ const Post = ({addToCart}) => {
                             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
                                 <div className="flex">
                                     <span className="mr-3">Color</span>
-                                    <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button className="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-                                    <button className="border-2 border-gray-300 ml-1 bg-indigo-500 rounded-full w-6 h-6 focus:outline-none"></button>
+                                    {Object.keys(variants).includes('white') && <button className="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>}                     {Object.keys(variants).includes('red') && <button className="border-2 border-gray-300 ml-1 bg-red-700 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(variants).includes('black') && <button className="border-2 border-gray-300 ml-1 bg-black-500 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(variants).includes('olive') && <button className="border-2 border-gray-300 ml-1 bg-lime-900 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(variants).includes('gray') && <button className="border-2 border-gray-300 ml-1 bg-gray-500 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                    {Object.keys(variants).includes('blue') && <button className="border-2 border-gray-300 ml-1 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
                                 </div>
                                 <div className="flex ml-6 items-center">
                                     <span className="mr-3">Size</span>
                                     <div className="relative">
                                         <select className="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-200 focus:border-indigo-500 text-base pl-3 pr-10">
-                                            <option>SM</option>
-                                            <option>M</option>
-                                            <option>L</option>
-                                            <option>XL</option>
+                                            {/* {Object.keys(variants).includes('S') && <option >S</option>}
+                                            {Object.keys(variants).includes('M') && <option  >M</option>}
+                                            {Object.keys(variants).includes('L') && <option >L</option>}
+                                            {Object.keys(variants).includes('XL') && <option >XL </option>} */}
                                         </select>
                                         <span className="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                                             <svg fill="none" stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-4 h-4" viewBox="0 0 24 24">
@@ -102,7 +105,7 @@ const Post = ({addToCart}) => {
                                 </div>
                             </div>
                             <div className="flex mb-4">
-                                <a className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">Description</a>
+                                <a className="flex-grow text-indigo-500 border-b-2 border-indigo-500 py-2 text-lg px-1">{Products.desc}</a>
                                 <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Reviews</a>
                                 <a className="flex-grow border-b-2 border-gray-300 py-2 text-lg px-1">Details</a>
                             </div>
@@ -124,7 +127,7 @@ const Post = ({addToCart}) => {
                                 <button onClick={checkAvailibility} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Check for Availibilty</button>
                             </div>
                             {(!service && service != null) && <div className='text-red-500 text-sm mt-2'>
-                                Sorry! We cannot deliver to this pincode </div>}
+                                Sorry! We cannot deliver on this pincode </div>}
 
                             {(service && service != null) && <div className='text-green-500 text-sm mt-2'>
                                 Yay! This Product is available at your pincode </div>
@@ -133,10 +136,45 @@ const Post = ({addToCart}) => {
 
                     </div>
                 </div>
+
             </section>
 
         </div>
     )
+}
+
+
+// Another method to fetch the data from the api 
+
+import Product from "@/models/Product";
+
+const mongoose = require('mongoose');
+export async function getServerSideProps(context) {
+
+    if (!(mongoose.connections[0].readyState)) {
+    }
+    await mongoose.connect(process.env.MONGO_URI);
+
+
+    let Products = await Product.findOne({slug: context.query.slug})
+
+    let variants = await Product.find({title: Products.title})
+
+    let ColorSizeSlug = {};  //{red:{xl:{slug:roadster_tees1}}}
+    for (let item of variants) {
+        if (Object.keys(ColorSizeSlug).includes(item.color)) {
+            ColorSizeSlug[item.color][item.size] = {slug: item.slug};
+        }
+        else {
+            ColorSizeSlug[item.color] = {}
+            ColorSizeSlug[item.color][item.size] = {slug: item.slug};
+        }
+
+    }
+
+
+    // Pass data to the page via props
+    return {props: {Products: JSON.parse(JSON.stringify(Products)), variants: JSON.parse(JSON.stringify(ColorSizeSlug))}}
 }
 
 export default Post 
