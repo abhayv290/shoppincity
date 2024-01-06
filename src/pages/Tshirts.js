@@ -2,6 +2,7 @@
 import React, {useEffect} from 'react'
 import Link from 'next/link'
 export default function Tshirts({Products}) {
+    document.title = 'Shoppincity-Tshirts';
 
     return (
         <div>
@@ -16,7 +17,7 @@ export default function Tshirts({Products}) {
                                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
                                     <h2 className="text-gray-900 title-font text-lg font-medium">{Products[item].title}</h2>
                                     <p className="mt-1">{Products[item].price}</p>
-                                    
+
                                     <div className='mt-1'>
                                         {Products[item].size.includes('S') && <span className='bg-gray-100 mx-1 px-2 border '>S</span>}
                                         {Products[item].size.includes('M') && <span className='bg-gray-100 mx-1 px-2 border ' >M</span>}
@@ -32,6 +33,7 @@ export default function Tshirts({Products}) {
                                         {Products[item].color.includes('blue') && <button className="border-2 border-gray-300 bg-blue-700 rounded-full w-6 h-6 focus:outline-none"></button>}
                                         {Products[item].color.includes('yellow') && <button className="border-2 border-gray-300 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"></button>}
                                         {Products[item].color.includes('white') && <button className="border-2 border-gray-300 bg-gray-50 rounded-full w-6 h-6 focus:outline-none"></button>}
+                                        {Products[item].color.includes('olive') && <button className="border-2 border-gray-300 bg-lime-950 rounded-full w-6 h-6 focus:outline-none"></button>}
 
                                     </div>
                                 </div>

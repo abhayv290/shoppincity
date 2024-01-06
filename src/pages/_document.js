@@ -8,6 +8,8 @@ export default function Document() {
         <script src="https://kit.fontawesome.com/3e87cae5ed.js" crossOrigin="anonymous"></script>
 
       </Head>
+
+
       <body>
         <Main />
         <NextScript />
