@@ -17,8 +17,8 @@ const handler = async (req, res) => {
                 available_qty: req.body[i].available_qty,
             })
             await p.save();
+            res.status(200).json({message: "success"});
         }
-        res.status(200).json(Success);
     } else {
         res.status(400).send("Not allowed")
     }
