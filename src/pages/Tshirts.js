@@ -2,7 +2,8 @@
 import React, {useEffect} from 'react'
 import Link from 'next/link'
 export default function Tshirts({Products}) {
-    document.title = 'Shoppincity-Tshirts';
+    console.log(Products);
+
 
     return (
         <div>
@@ -16,7 +17,7 @@ export default function Tshirts({Products}) {
                                 <div className="mt-4">
                                     <h3 className="text-gray-500 text-xs tracking-widest title-font mb-1">Tshirts</h3>
                                     <h2 className="text-gray-900 title-font text-lg font-medium">{Products[item].title}</h2>
-                                    <p className="mt-1">{Products[item].price}</p>
+                                    <p className="mt-1">₹{Products[item].price}</p>
 
                                     <div className='mt-1'>
                                         {Products[item].size.includes('S') && <span className='bg-gray-100 mx-1 px-2 border '>S</span>}
@@ -72,7 +73,7 @@ const mongoose = require('mongoose');
 export async function getServerSideProps(context) {
 
     if (mongoose.connections[0].readyState) {
-        console.log("server not found")
+
     }
     await mongoose.connect(process.env.MONGO_URI);
 

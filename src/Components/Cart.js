@@ -18,18 +18,6 @@ const Cart = ({cart, subTotal, handleQuantityChange, clearCart}) => {
         }
         return total;
     }
-
-
-
-
-
-
-
-
-
-
-
-
     return (
         // <Draggable>
 
@@ -44,10 +32,11 @@ const Cart = ({cart, subTotal, handleQuantityChange, clearCart}) => {
                     myitem.map((k, index) => (
                         <div key={index} className="flex items-center justify-between border-b pb-2">
                             <div className="flex items-center space-x-8">
-                                <img src={cart[k].image.src} alt={cart[k].name} className=" h-20 rounded-md" />
+                                <img src={cart[k].image} alt={cart[k].name}
+                                    className=" h-20 rounded-md" />
                                 <div className=' mx-4 flex flex-col'>
-                                    <h3 className="text-lg font-semibold">{cart[k].name}</h3>
-                                    <p className="text-gray-500">Price:₹{cart[k].price}</p>
+                                    <h3 className="text-lg text-gray-900 font-semibold">{cart[k].name} <sub className='text-slate-500'>({cart[k].size},{cart[k].color})</sub> </h3>
+                                    <p className="text-gray-700">Price:₹{cart[k].price}</p>
                                 </div>
                             </div>
                             <div className="flex items-center space-x-4 ml-8">

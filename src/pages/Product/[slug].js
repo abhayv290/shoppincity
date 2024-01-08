@@ -2,12 +2,13 @@
 import React, {useState} from 'react'
 import {useRouter} from 'next/router'
 import Image from 'next/image';
-
+import {ToastContainer, toast} from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import tshirt1 from '../../Assests/tshirt1_.jpg'
 
 
 const Post = ({addToCart, Products, variants}) => {
-
+    const notify = () => toast("Wow so easy!");
     //To get slug via userouter
     const router = useRouter();
     const {slug} = router.query;
@@ -21,11 +22,42 @@ const Post = ({addToCart, Products, variants}) => {
     }
     //Function for Check the Product availibility at your area_pincode
     const checkAvailibility = async () => {
+
         let mypin = await fetch('http://localhost:3000/api/pincode');
         let pinJson = await mypin.json();
         // console.log(pinJson);
-        (pin && pinJson && pinJson.includes(parseInt(pin))) ? setService(true) : setService(false);
+        if (pin && pinJson && pinJson.includes(parseInt(pin))) {
+            setService(true)
+            toast.success('Product is available at this pin!', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+
+        }
+        else {
+            setService(false);
+            toast.warn('Sorry! We can not reach out to you', {
+                position: "bottom-center",
+                autoClose: 1000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+            });
+
+        }
+
         // console.log(service)
+
     }
 
     //Managing Color and Sizes
@@ -39,6 +71,18 @@ const Post = ({addToCart, Products, variants}) => {
 
     return (
         <div>
+            <ToastContainer
+                position="bottom-center"
+                autoClose={1000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
             <section className="text-gray-600 body-font overflow-hidden">
 
                 <div className="container px-5 py-12 mx-auto">
@@ -126,7 +170,7 @@ const Post = ({addToCart, Products, variants}) => {
                             <hr />
                             <div className="flex py-12">
                                 <span className="title-font font-medium text-2xl text-gray-900">₹{Products.price} only</span>
-                                <button onClick={() => {addToCart(slug, 1, 400, 'tshirt', 'M', 'Red', tshirt1)}} className="flex active:bg-green-800 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 
+                                <button onClick={() => {addToCart(slug, 1, Products.price, Products.title, Products.size, Products.color, Products.img)}} className="flex active:bg-green-800 ml-auto text-white bg-indigo-500 border-0 py-2 px-6 
                                 focus:outline-none hover:bg-indigo-600 rounded">Add to Cart</button>
                                 <button className="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
                                     <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5 text-red-600" viewBox="0 0 24 24">
@@ -140,7 +184,8 @@ const Post = ({addToCart, Products, variants}) => {
                                 <button onClick={checkAvailibility} className="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Check for Availibilty</button>
                             </div>
                             {(!service && service != null) && <div className='text-red-500 text-sm mt-2'>
-                                Sorry! We cannot deliver on this pincode </div>}
+                                Sorry! We cannot deliver on this pincode
+                            </div>}
 
                             {(service && service != null) && <div className='text-green-500 text-sm mt-2'>
                                 Yay! This Product is available at your pincode </div>

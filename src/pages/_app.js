@@ -1,6 +1,7 @@
 import Footer from '@/Components/Footer'
 import Navbar from '@/Components/Navbar'
 import '@/styles/globals.css'
+import {toast} from 'react-toastify'
 import React, {useState, useEffect} from 'react';
 
 
@@ -56,11 +57,21 @@ export default function App({Component, pageProps}) {
     setCart(newCart);
 
     saveCart(newCart);
+    toast.success('Item is added to Cart!', {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
 
 
-
+  const notify = () => toast("Wow so easy!");
   const handleQuantityChange = (itemCode, qty) => {
     qty = parseInt(qty, 10) || 0;
 
@@ -74,6 +85,16 @@ export default function App({Component, pageProps}) {
     // Update the state
     setCart(newCart);
     saveCart(newCart);
+    toast.success('Updated the cart item', {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   };
 
 
@@ -81,6 +102,16 @@ export default function App({Component, pageProps}) {
   const clearCart = () => {
     setCart({})
     saveCart({});
+    toast.success('The cart is now empty', {
+      position: "bottom-center",
+      autoClose: 1000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
 
