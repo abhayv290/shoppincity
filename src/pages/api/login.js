@@ -1,15 +1,19 @@
 import connectDb from "@/middleware/mongoose";
 import User from "@/models/User";
+const bcrypt = require('bcryptjs')
+const jwt = require('jsonwebtoken');
 
 
 const handler = async (req, res) => {
     try {
+
         if (req.method == 'POST') {
             let user = await User.findOne({email_id: req.body.email})
 
-
-            if (user && req.body.email == user.email_id && req.body.password == user.pswd) {
-                res.status(200).json({success: [user.email_id, user.pswd]})
+            let comparePassword = bcrypt.compareSync(req.body.password, user.pswd);
+            if (user && req.body.email == user.email_id && comparePassword) {
+                const token = await jwt.sign({name: user.user_name, email: user.email_id}, 'Nikhil', {expiresIn: '7d'});
+                res.status(200).json({success: true, webtoken: token});
             }
 
             else {

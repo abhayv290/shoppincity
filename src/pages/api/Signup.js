@@ -1,14 +1,18 @@
 import connectDb from "@/middleware/mongoose";
 import User from "@/models/User";
+let bcrypt = require('bcryptjs');
 
 
 const handler = async (req, res) => {
+
     try {
+        const salt = bcrypt.genSaltSync(10);
+        const hash = bcrypt.hashSync(req.body.password, salt);
         if (req.method == 'POST') {
             let newUser = new User({
                 user_name: req.body.name,
                 email_id: req.body.email_id,
-                pswd: req.body.password
+                pswd: hash
             })
             await newUser.save();
             res.status(200).json({newUser})

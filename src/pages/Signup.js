@@ -28,9 +28,6 @@ const Signup = () => {
             password: newUser.password
         }
         console.log(postData);
-
-
-
         // Make the POST request using the Fetch API
         try {
             const response = await fetch('http://localhost:3000/api/Signup', {

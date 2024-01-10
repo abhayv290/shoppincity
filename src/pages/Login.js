@@ -41,7 +41,7 @@ const Login = () => {
             }
 
             const data = await response.json();
-
+            localStorage.setItem('token', data.webtoken);
             // Notification
             toast.success('Login successful', {
                 position: 'top-center',
