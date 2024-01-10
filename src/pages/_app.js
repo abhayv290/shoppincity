@@ -11,8 +11,6 @@ export default function App({Component, pageProps}) {
 
 
   useEffect(() => {
-
-
     try {
       if (localStorage.getItem('cart')) {
         setCart(JSON.parse(localStorage.getItem('cart')));
@@ -25,6 +23,8 @@ export default function App({Component, pageProps}) {
     }
 
   }, [])
+
+
 
   //to preventing from reset cz of page reloading
   const saveCart = (myCart) => {
@@ -41,13 +41,13 @@ export default function App({Component, pageProps}) {
     // console.log(subTotal)
   }
 
+  // react Toastify
+  const notify = () => toast("Wow so easy!");
 
-
-
-  //Fuction for adding item in the cart
+  //Function for adding item in the cart
   const addToCart = (itemCode, qty, price, name, size, color, image) => {
-    let newCart = cart;
-    if (itemCode in cart) {
+    let newCart = {...cart};
+    if (itemCode in newCart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty;
     }
 
@@ -71,7 +71,7 @@ export default function App({Component, pageProps}) {
 
 
 
-  const notify = () => toast("Wow so easy!");
+
   const handleQuantityChange = (itemCode, qty) => {
     qty = parseInt(qty, 10) || 0;
 

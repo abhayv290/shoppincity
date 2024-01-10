@@ -35,8 +35,8 @@ export default function Hoodies({Products}) {
                                         {Products[item].color.includes('yellow') && <button className="border-2 border-gray-300 bg-yellow-500 rounded-full w-6 h-6 focus:outline-none"></button>}
                                         {Products[item].color.includes('white') && <button className="border-2 border-gray-300 bg-gray-50 rounded-full w-6 h-6 focus:outline-none"></button>}
                                         {Products[item].color.includes('olive') && <button className="border-2 border-gray-300 bg-lime-950 rounded-full w-6 h-6 focus:outline-none"></button>}
-
                                     </div>
+
                                 </div>
                             </div>
                         ))}

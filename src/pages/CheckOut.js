@@ -15,7 +15,7 @@ export default function CheckOut({cart, subTotal, removeFromCart, clearCart}) {
 
     return (
 
-        <div className='flex flex-wrap mt-8'>
+        <div className='flex flex-wrap mt-8 '>
             <div>
                 <h2 className='max-sm:text-center   w-40% text-gray-900  font-bold mt-8'><span className='md:relative underline-offset-2 md:left-40 rounded-md px-8  p-2 '>Delivery Details</span></h2>
                 <div className="container flex flex-wrap">
@@ -77,7 +77,7 @@ export default function CheckOut({cart, subTotal, removeFromCart, clearCart}) {
                 </div>
             </div>
 
-            <div className="max-w-50% mx-auto mt-8 bg-white rounded-md shadow-md overflow-hidden">
+            <div className="max-w-50% mx-auto mt-8 text-gray-800 bg-white rounded-md shadow-md overflow-hidden">
                 <div className="text-center  md:w-96  p-4">
                     <h2 className="text-xl font-semibold underline-offset-2 ">Review Your Cart</h2>
                 </div>
@@ -87,28 +87,24 @@ export default function CheckOut({cart, subTotal, removeFromCart, clearCart}) {
                         myitem.map((k) => (
                             <div key={cart[k]} className="flex items-center justify-between border-b pb-2">
                                 <div className="flex items-center space-x-8">
-                                    <img src={cart[k].image.src} alt={cart[k].name} className=" h-20 rounded-md" />
+                                    <img src={cart[k].image} alt={cart[k].name} className=" h-20 rounded-md" />
                                     <div className=' mx-4 flex flex-col'>
-                                        <h3 className="text-lg font-semibold">{cart[k].name}</h3>
+                                        <h3 className="text-lg font-semibold">{cart[k].name} <sup>{cart[k].size} , {cart[k].color}</sup></h3>
                                         <p className="text-gray-500">Price:₹{cart[k].price}</p>
                                     </div>
                                 </div>
                                 <div className="flex items-center space-x-4 ml-8">
-                                    <button className="text-red-500 text-4xl focus:outline-none">
-                                        -
-                                    </button>
+
                                     <span className="font-semibold text-2xl">{cart[k].qty}</span>
-                                    <button className="text-green-500 text-4xl focus:outline-none">
-                                        +
-                                    </button>
+
                                 </div>
-                                {/* <button onClick={() => removeFromCart(cart[k])} className="text-red-500 focus:outline-none">Remove</button> */}
+
                             </div>
                         ))}
                 </div>
                 {Object.keys(cart).length === 0 && <div className='flex flex-col items-center'>
                     <h3 ><strong>Your Cart is Empty</strong></h3>
-                    <img className='w-80' src="https://cdni.iconscout.com/illustration/premium/thumb/your-cart-is-empty-2161427-1815069.png" alt="your cart is empty"/>
+                    <img className='w-80' src="https://cdni.iconscout.com/illustration/premium/thumb/your-cart-is-empty-2161427-1815069.png" alt="your cart is empty" />
                     <button className='w-full mt-4 bg-indigo-500 text-white py-2 rounded-md hover:bg-indigo-600 focus:outline-none'>shop now</button>
                 </div>}
                 <div class="p-4 bg-gray-100 border-t">
