@@ -1,19 +1,20 @@
-"use client"; // This ensures the component is treated as a Client Component
-import React from 'react';
+"use client"; //to ensure the components is rendered as client component
+import React, { useState } from 'react';
 import { Oswald, Roboto } from 'next/font/google';
 import Image from 'next/image';
 import Link from 'next/link';
-import { IoBagHandleSharp, IoHeart, IoSearch } from "react-icons/io5";
+import { IoBagHandleSharp, IoHeart, IoSearch, IoCartSharp } from "react-icons/io5";
 import { RiAccountCircleFill } from "react-icons/ri";
-import { useState } from 'react';
+import { FaShoppingCart } from 'react-icons/fa';
+
 const oswald = Oswald({ subsets: ['latin'], weight: '500' });
 const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 const Navbar: React.FC = () => {
-    const [searchClick, setsearchClick] = useState(false);
+    const [searchClick, setSearchClick] = useState<boolean>(false);
 
     return (
-        <div className={`${oswald.className} flex items-center px-4 sm:px-10 justify-between bg-slate-900 min-h-16 text-blue-50 text-2xl`}>
+        <div className={`${oswald.className} sticky z-10 top-0 flex items-center px-4 sm:px-10 justify-between bg-slate-900 min-h-16 text-blue-50 text-2xl`}>
             <div>
                 <Link href={'/'}>
                     ShoppinCity
@@ -22,26 +23,33 @@ const Navbar: React.FC = () => {
                 {/* <Image src={'/brandLogo.png'} height={100} width={100} alt='brandLogo' /> */}
             </div>
             <div className='flex gap-6 sm:gap-12 items-center'>
-                <div className='flex items-center relative'>
-                    <span>
-                        <input
-                            className={`${roboto.className} ${searchClick ? 'max-sm:absolute max-sm:top-10 max-sm:-right-32 max-sm:w-64' : 'max-sm:hidden'} sm:w-52 md:w-96 h-8 p-2 px-2 pl-10 text-gray-700 outline-1 outline-gray-200 rounded-sm  text-base`}
-                            placeholder='Search for Products, brands and more'
-                            type="text"
-                        />
-                    </span>
-                    <button className='sm:absolute sm:left-0 sm:align-middle sm:pr-2 sm:border-r sm:border-r-gray-400' onClick={() => searchClick ? setsearchClick(false) : setsearchClick(true)} type='button'>
-                        <IoSearch className=' sm:text-gray-700' />
+                <div
+                    onMouseEnter={() => setSearchClick(true)}
+                    onMouseLeave={() => setSearchClick(false)}
+                    className='flex items-center sm:relative'
+                >
+                    <input
+                        className={`${roboto.className} ${searchClick ? 'max-sm:absolute  max-sm:text-lg  max-sm:left-0 max-sm:h-12 max-sm:w-full sm:w-52 md:w-96 sm:visible' : 'max-sm:hidden sm:invisible w-0'} h-8 p-2 px-2 pl-10 text-gray-500 transition-all duration-300 outline-1 outline-gray-300 rounded-sm text-base`}
+                        placeholder='Search for Products, brands and more'
+                        type="text"
+                        aria-label="Search"
+                    />
+                    <button onClick={() => setSearchClick(!searchClick)}
+                        className={`sm:absolute sm:left-0 sm:align-middle sm:pr-2 ${searchClick ? 'sm:border-r sm:border-r-gray-400' : ''}`}
+                        type='button'
+                        aria-label="Toggle Search"
+                    >
+                        <IoSearch className={searchClick ? 'text-gray-700' : 'text-blue-50'} />
                     </button>
                 </div>
-                <Link href={'/profile'}>
-                    <RiAccountCircleFill />
+                <Link href={'/profile'} className='hover:scale-105 hover:text-blue-100 active:text-blue-300' >
+                    <RiAccountCircleFill aria-label="Profile" />
                 </Link>
-                <Link href={'/wishlist'}>
-                    <IoHeart />
+                <Link href={'/wishlist'} className='hover:scale-105 hover:text-blue-100 active:text-blue-300' >
+                    <IoHeart aria-label="Wishlist" />
                 </Link>
-                <Link href={'/bag'}>
-                    <IoBagHandleSharp />
+                <Link href={'/cart'} className='hover:scale-105 hover:text-blue-100 active:text-blue-300' >
+                    <FaShoppingCart aria-label="Cart" />
                 </Link>
             </div>
         </div>

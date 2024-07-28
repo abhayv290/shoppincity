@@ -12,23 +12,23 @@ const Footer = () => {
                         <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Electronics</h2>
                         <nav className="list-none mb-10">
                             <li>
-                                <a className="text-gray-400 hover:text-white">Mobile</a>
+                                <a className="text-gray-400 hover:text-white">Mobile & Smart watches</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">Laptops</a>
+                                <a className="text-gray-400 hover:text-white">Laptops & Accessories</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">TVs</a>
+                                <a className="text-gray-400 hover:text-white">TVs & other home Appliances</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">HeadPhones</a>
+                                <a className="text-gray-400 hover:text-white">Speakers & headphones</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">Tablets</a>
+                                <a className="text-gray-400 hover:text-white">Computers & tablets</a>
                             </li>
                         </nav>
                     </div>
-                    <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+                    <div className="lg:w-1/4 md:w-1/2 w-full px-4 border-r border-gray-500">
                         <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Fashion</h2>
                         <nav className="list-none mb-10">
                             <li>
@@ -49,27 +49,27 @@ const Footer = () => {
                         </nav>
                     </div>
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Home Appliances</h2>
+                        <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Useful Links</h2>
                         <nav className="list-none mb-10">
                             <li>
-                                <a className="text-gray-400 hover:text-white">Fridge & ACs</a>
+                                <a className="text-gray-400 hover:text-white">Help & support</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">Washing Machine</a>
+                                <a className="text-gray-400 hover:text-white">FAQs</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">Furniture</a>
+                                <a className="text-gray-400 hover:text-white">Buying Guide</a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">Kitchen Essentials </a>
+                                <a className="text-gray-400 hover:text-white">Privacy Policy </a>
                             </li>
                             <li>
-                                <a className="text-gray-400 hover:text-white">...</a>
+                                <a className="text-gray-400 hover:text-white">T&C</a>
                             </li>
                         </nav>
                     </div>
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-                        <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">SUBSCRIBE</h2>
+                        <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Contact With Us</h2>
                         <div className="flex xl:flex-nowrap md:flex-nowrap lg:flex-wrap flex-wrap justify-center items-end md:justify-start">
                             <div className="relative w-40 sm:w-auto xl:mr-4 lg:mr-0 sm:mr-4 mr-2">
                                 <label htmlFor="footer-field" className="leading-7 text-sm text-gray-400"></label>
@@ -77,8 +77,8 @@ const Footer = () => {
                             </div>
                             <button className="lg:mt-2 xl:mt-0 flex-shrink-0 inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded">Submit</button>
                         </div>
-                        <p className="text-gray-500 text-sm mt-2 md:text-left text-center">Know more about us
-                            <br className="lg:block hidden" />and join us as a seller
+                        <p className="text-gray-500 text-sm mt-2 md:text-left text-center">Know more about
+                            <br />India&apos;s  one of the biggest online  store
                         </p>
                     </div>
                 </div>
