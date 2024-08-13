@@ -2,9 +2,14 @@
 import React, { useCallback, useState } from 'react'
 
 import { Icon, Rating } from '@mui/material'
-import { IoCart } from 'react-icons/io5'
+
 import ProductImg from './ProductImg'
 import { FaCartArrowDown } from 'react-icons/fa6'
+import { useCart } from '../hooks/useCart'
+import truncate from '../utills/truncate'
+import { useRouter } from 'next/navigation'
+import toast, { Toaster } from 'react-hot-toast'
+
 
 
 interface productDetailsProps {
@@ -28,7 +33,12 @@ export type selectImgType = {
 }
 const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     //Reducer function to calculate the avg rating of the product
+    const router = useRouter();
+
     const rating = product.reviews.reduce((acc: number, curr: any) => acc + curr.rating, 0) / product.reviews.length
+
+
+
     // cartState
     const [cartProduct, setCartProduct] = useState<cartProductType>({
         id: product.id,
@@ -50,26 +60,38 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     //Same job using react usecallback hook 
     const handleColor = useCallback((value: selectImgType) => {
         setCartProduct((prev) => { return { ...prev, selectImg: value } })
-    }, [cartProduct.selectImg])
+    }, [])
 
-    //This callback function handles the change in the quantity of the cart product
+    //This Arrow function handles the change in the quantity of the cart product
     const handleQtyChange = (num: number) => {
         setCartProduct({ ...cartProduct, quantity: cartProduct.quantity + num })
     }
 
     // This Function Add Items to the cart
-    const addToCart = () => {
+    const { addToCart, cartItem, cartQty } = useCart();
 
+    const handleCartButton = (cartProduct: cartProductType) => {
+        if (cartItem?.find(item => item.id === cartProduct.id)) {
+            toast.error(`${truncate(cartProduct.name)} already in the cart`)
+            router.push('/cart');
+        } else {
+            addToCart(cartProduct);
+            toast.success(`${truncate(cartProduct.brand)} added to the cart `)
+
+        }
     }
+
+
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 gap-12 text-slate-700'>
+            <Toaster />
             <div>
                 <ProductImg product={product} handleColor={handleColor} cartProduct={cartProduct} />
             </div>
             <div className='space-y-2'>
                 <h1 className='text-xl sm:text-3xl font-semibold'>{product.name}</h1>
                 <div className='flex gap-2 items-center'>
-                    <Rating value={rating} readOnly />
+                    <Rating value={rating} precision={0.5} readOnly />
                     <h5 className='text-base text-slate-500' >{product.reviews.length} reviews</h5>
                 </div>
                 <hr className='mt-2 mb-2' />
@@ -85,7 +107,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
                 <SetQty cartProduct={cartProduct} cartCounter={false} handleQtyChange={handleQtyChange} />
                 <hr className='mt-2 mb-2' />
                 <div>
-                    <button className='flex w-48 items-center justify-center gap-2 hover:bg-slate-600 hover:text-gray-100 p-1 px-4 rounded-sm active:bg-green-600 border-2 border-slate-700 shadow-sm  shadow-slate-800 hover:' onClick={() => addToCart} type='button'><FaCartArrowDown className='text-lg' /> <span className='text-lg'>Add to Cart</span> </button>
+                    <button className='flex w-48 items-center justify-center gap-2 hover:bg-slate-600 hover:text-gray-100 p-1 px-4 rounded-sm active:bg-green-600 border-2 border-slate-700 shadow-sm  shadow-slate-800 hover:' onClick={() => handleCartButton(cartProduct)} type='button'><FaCartArrowDown className='text-lg' /> <span className='text-lg'>{(cartItem?.find(item => item.id === cartProduct.id)) ? 'Go To Cart' : 'Add To Cart'}</span> </button>
                 </div>
 
             </div>

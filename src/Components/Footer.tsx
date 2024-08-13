@@ -28,7 +28,7 @@ const Footer = () => {
                             </li>
                         </nav>
                     </div>
-                    <div className="lg:w-1/4 md:w-1/2 w-full px-4 border-r border-gray-500">
+                    <div className="lg:w-1/4 md:w-1/2 w-full px-4 lg:border-r border-gray-500">
                         <h2 className="title-font font-bold hover:underline   text-white tracking-widest text-sm mb-3">Fashion</h2>
                         <nav className="list-none mb-10">
                             <li>

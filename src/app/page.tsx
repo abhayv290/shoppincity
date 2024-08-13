@@ -1,11 +1,11 @@
+'use client'
 import React from 'react'
-import Container from './Components/Container'
-import HomeBanner from './Components/HomeBanner'
+import Container from '../Components/Container'
+import HomeBanner from '../Components/HomeBanner'
 import Image from 'next/image'
 import { products } from './products'
 
-import ProductCard from './Components/ProductCard'
-
+import ProductCard from '../Components/ProductCard'
 
 
 export default function Home() {
