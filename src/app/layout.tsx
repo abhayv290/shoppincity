@@ -24,6 +24,7 @@ export default async function RootLayout({
 }>) {
   const User = await getUser();
 
+
   return (
     <html lang="en">
       <body className={`${roboto.className} flex-col flex min-h-screen`}>

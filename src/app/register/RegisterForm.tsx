@@ -20,18 +20,18 @@ const RegisterForm: React.FC<PropsType> = ({ isLogged }) => {
     const onSubmit: SubmitHandler<FieldValues> = (data) => {
         setIsLoading(true);
         axios.post('/api/register', data).then(() => {
-            toast('Account Created Successful');
+            toast('Account Creation Successful');
             signIn('credentials', {
                 email: data?.email,
                 password: data?.password,
                 redirect: false
-            }).then((callback) => {
-                if (callback?.ok) {
+            }).then((res) => {
+                if (res?.ok) {
                     router.push('/cart');
                     router.refresh();
                     toast.success('Logged in')
-                } if (callback?.error) {
-                    toast.error(callback?.error);
+                } if (res?.error) {
+                    toast.error(res?.error);
                 }
             })
         }).catch(() => {
@@ -49,7 +49,9 @@ const RegisterForm: React.FC<PropsType> = ({ isLogged }) => {
     }, [])
 
     return isLogged ? (<div className="text-center font-semibold text-slate-900">Logged In redirecting...</div>) : (
-        <>  <MdAccountCircle className='text-8xl border-2 border-slate-300 rounded-full shadow-md shadow-slate-200 text-gray-800' />
+
+        <>  <span><MdAccountCircle className='text-8xl rounded-full border-2 shadow-sm shadow-slate-300' />
+        </span>
             <h1 className=' text-center text-slate-800 font-bold text-xl sm:text-2xl md:text-4xl'>Sign Up</h1>
             <hr className='bg-slate-300 w-full h-px' />
             <button type='button' onClick={() => { signIn('google') }} className='px-4 p-2 flex justify-center items-center gap-5 min-w-48 border border-slate-300 hover:text-blue-50 font-semibold  hover:bg-slate-700 rounded-md shadow-md shadow-slate-200 text-slate-800 active:bg-slate-900' ><FcGoogle className='text-lg ' /> Login with Google</button>

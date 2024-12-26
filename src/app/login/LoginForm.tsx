@@ -37,7 +37,7 @@ const LoginForm: React.FC<loginPropType> = ({ isLogged }) => {
             router.refresh();
         }
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [])
+    }, [isLogged])
 
     return isLogged ? (<div className='text-center text-slate-900 font-semibold text-xl'>Logged In Redirecting....</div>) : (
         <>  <MdAccountCircle className='text-8xl border-2 border-slate-300 rounded-full shadow-md shadow-slate-200 text-gray-800' />

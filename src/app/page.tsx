@@ -8,7 +8,9 @@ import { products } from './products'
 import ProductCard from '../Components/ProductCard'
 
 
+
 export default function Home() {
+
 
   return (
     <div className='mx-auto'>

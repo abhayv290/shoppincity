@@ -23,7 +23,7 @@ const Navbar: React.FC<propType> = ({ isLogged }) => {
     const path = usePathname();
 
     return (
-        <header className={`${oswald.className} shadow-md shadow-gray-500 sticky z-10 top-0 flex items-center px-4 sm:px-10 justify-between bg-slate-900 min-h-16 text-blue-50 text-2xl`}>
+        <header className={`${oswald.className} shadow-md shadow-gray-500 sticky z-10 top-0 flex items-center px-4 sm:px-10 justify-between bg-slate-950 min-h-16 text-blue-50 text-2xl`}>
             <div>
                 <Link href={'/'} className={`${path === '/' ? 'text-rose-500' : ''} hover:scale-110 transition-transform active:text-rose-500 hover:text-blue-300`}>
                     ShoppinCity

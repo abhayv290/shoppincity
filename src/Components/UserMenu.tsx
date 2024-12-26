@@ -4,6 +4,9 @@ import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { PiUserListBold } from 'react-icons/pi';
 import { safeUser } from '../type';
+import Image from 'next/image';
+import { MdAccountCircle } from 'react-icons/md';
+
 
 interface propType {
     isLogged: safeUser | null;
@@ -46,36 +49,42 @@ const UserMenu: React.FC<propType> = ({ isLogged }) => {
                     <PiUserListBold aria-label="Profile" />
                 </button>
                 {isOpen && (
-                    <div className='absolute rounded-md shadow-md shadow-slate-300 bg-blue-50 w-52 text-slate-800 overflow-hidden right-0 top-12 flex flex-col cursor-pointer text-lg items-center justify-start'>
+                    <div className='absolute min-h-60 rounded-sm shadow-md shadow-slate-500 bg-slate-200 w-52 text-slate-800 overflow-hidden right-0 top-12 flex flex-col cursor-pointer text-lg items-center justify-start'>
                         {!isLogged ? (<div className='font-normal flex items-center justify-evenly w-full border-b'>
                             <Link className='border-r p-2 text-center w-full hover:bg-blue-500' href='/login'>Login</Link>
                             <Link className='hover:bg-rose-400 p-2 w-full text-center' href='/register'>Sign up</Link>
                         </div>) :
-                            (<button type='button' onClick={() => { setIsOpen(false); signOut() }} className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b' >LogOut</button>)}
-                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b' href='/order'>My Orders</Link>
-                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b' href='/contact'>Contact Us</Link>
-                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b' href='/about'>About Us</Link>
+                            (<div className='font-normal flex items-center justify-evenly w-full border-b'>
+                                <Link className='border-r p-2 text-center w-full hover:bg-blue-500' href='/login'>{isLogged?.image ? <Image className='object-contain  w-12  rounded-full border shadow-sm shadow-slate-500' height={50} width={50} src={isLogged?.image} alt='avatar'></Image> : <span className='flex items-center justify-center  text-3xl rounded-full border border-gray-500 shadow-sm shadow-gray-400 '> <MdAccountCircle /> </span>}
+
+                                </Link>
+                                <button type='button' onClick={() => { setIsOpen(false); signOut() }} className='font-normal h-full hover:bg-blue-400 active:bg-rose-400 px-4 w-full  p-2 border-b border-slate-300' >Logout</button>
+                            </div>)
+                        }
+                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b border-slate-300' href='/order'>My Orders</Link>
+                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b border-slate-300' href='/contact'>Contact Us</Link>
+                        <Link className='font-normal  hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b border-slate-300' href='/about'>About Us</Link>
                         <hr />
-                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b' href='/admin'>Admin Dashboard</Link>
+                        <Link className='font-normal hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b border-slate-300' href='/admin'>Admin Dashboard</Link>
 
 
-                        <div className='relative z-40'>
-                            <button
-                                type='button'
-                                className='w-full text-center px-4 py-2'
-                                onClick={toggleSubmenu}
-                            >
-                                Products
-                            </button>
 
-                        </div>
+                        <button
+                            type='button'
+                            className='font-normal text-start hover:bg-blue-400 active:bg-rose-400 px-4 w-full py-2 border-b'
+                            onClick={toggleSubmenu}
+                        >
+                            Products
+                        </button>
+
+
                     </div>
 
                 )}
                 {isSubmenuOpen && (
-                    <div className="absolute top- right-full bg-white shadow-lg w-32 z-50 text-gray-700 overflow-hidden rounded-md">
-                        <Link href="/products/category1" className="block px-4 py-2 hover:bg-gray-200">Category 1</Link>
-                        <Link href="/products/category2" className="block px-4 py-2 hover:bg-gray-200">Category 2</Link>
+                    <div className="absolute top-72 right-40 text-base bg-white shadow-sm min-w-40 z-50 text-gray-700 flex flex-col rounded-sm">
+                        <Link href="/products/category1" className=" hover:bg-blue-400 active:bg-rose-400 px-4  py-2 border-b">Category1</Link>
+                        <Link href="/products/category2" className=" hover:bg-blue-400 active:bg-rose-400 px-4  py-2 border-b">Category 2</Link>
                     </div>
                 )}
             </div>

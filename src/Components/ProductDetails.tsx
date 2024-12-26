@@ -71,8 +71,9 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
     const { addToCart, cartItem, cartQty } = useCart();
 
     const handleCartButton = (cartProduct: cartProductType) => {
-        if (cartItem?.find(item => item.id === cartProduct.id)) {
-            toast.error(`${truncate(cartProduct.name)} already in the cart`)
+        if (cartItem?.find(item => item.id === cartProduct.id && item.selectImg.color === cartProduct.selectImg.color)) {
+            //Check if the item is already in the cart
+            // toast.error(`${truncate(cartProduct.name)} already in the cart`)
             router.push('/cart');
         } else {
             addToCart(cartProduct);
@@ -80,6 +81,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
 
         }
     }
+
 
 
     return (
@@ -107,7 +109,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
                 <SetQty cartProduct={cartProduct} cartCounter={false} handleQtyChange={handleQtyChange} />
                 <hr className='mt-2 mb-2' />
                 <div>
-                    <button className='flex w-48 items-center justify-center gap-2 hover:bg-slate-600 hover:text-gray-100 p-1 px-4 rounded-sm active:bg-green-600 border-2 border-slate-700 shadow-sm  shadow-slate-800 hover:' onClick={() => handleCartButton(cartProduct)} type='button'><FaCartArrowDown className='text-lg' /> <span className='text-lg'>{(cartItem?.find(item => item.id === cartProduct.id)) ? 'Go To Cart' : 'Add To Cart'}</span> </button>
+                    <button className='flex w-48 items-center justify-center gap-2 hover:bg-slate-600 hover:text-gray-100 p-1 px-4 rounded-sm active:bg-green-600 border-2 border-slate-700 shadow-sm  shadow-slate-800 hover:' onClick={() => handleCartButton(cartProduct)} type='button'><FaCartArrowDown className='text-lg' /> <span className='text-lg'>{(cartItem?.find(item => item.id === cartProduct.id && item.selectImg.color === cartProduct.selectImg.color)) ? 'Go To Cart' : 'Add To Cart'}</span> </button>
                 </div>
 
             </div>

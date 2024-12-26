@@ -5,7 +5,7 @@ import { Oswald } from 'next/font/google'
 const oswald = Oswald({ subsets: ['latin'], weight: '500' })
 const Footer = () => {
     return (
-        <footer className="text-gray-400 bg-gray-900 body-font">
+        <footer className="text-gray-400 bg-gray-950 body-font">
             <div className="container px-5 py-12 mx-auto">
                 <div className="flex flex-wrap md:text-left text-center order-first">
                     <div className="lg:w-1/4 md:w-1/2 w-full px-4">
@@ -83,7 +83,7 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            <div className="bg-gray-800 bg-opacity-75">
+            <div className="bg-gray-900 bg-opacity-75">
                 <div className="container px-5 py-6 mx-auto flex items-center sm:flex-row flex-col">
                     <a className="flex title-font font-medium items-center md:justify-start justify-center text-white">
 
