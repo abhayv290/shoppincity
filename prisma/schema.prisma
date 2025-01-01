@@ -1,3 +1,20 @@
+type cartProductType {
+  id          String
+  name        String
+  description String
+  category    String
+  brand       String
+  selectImg   selectImgType
+  quantity    Int
+  price       Float
+}
+
+type selectImgType {
+  color     String
+  colorCode String
+  image     String
+}
+
 datasource db {
   provider = "mongodb"
   url      = env("DATABASE_URL")
@@ -15,6 +32,7 @@ model User {
   image          String?
   hashedPassword String?
   accounts       Account[]
+  order          Order[]
   role           Role      @default(USER)
 
   createdAt DateTime @default(now())
@@ -46,4 +64,27 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+model Order {
+  id             String            @id @default(auto()) @map("_id") @db.ObjectId
+  userId         String            @db.ObjectId
+  status         String
+  amount         Float
+  currency       String
+  deliveryStatus String
+  createdAt      DateTime          @default(now())
+  paymentId      String            @unique
+  products       cartProductType[]
+  address        Address?
+  user           User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+type Address {
+  city        String?
+  country     String?
+  line1       String?
+  line2       String?
+  postal_code String?
+  state       String?
 }

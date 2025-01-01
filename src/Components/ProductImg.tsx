@@ -35,8 +35,8 @@ const ProductImg: React.FC<ProductImgProps> = ({ cartProduct, product, handleCol
                     </div>
                 ))}
             </div>
-            <div className='col-span-5 relative aspect-square '>
-                <Image fill src={cartProduct.selectImg.image} className='object-contain w-full h-full  max-h-[500px] min-h-80 sm:min-h-96 ' alt={product.name}></Image>
+            <div className='col-span-5 relative aspect-square h-full w-full'>
+                <Image fill src={cartProduct.selectImg.image} className='object-contain w-full   max-h-[500px] min-h-80 sm:min-h-96' alt={product.name}></Image>
                 <button className='absolute right-0 bottom-0 text-3xl' onClick={() => handleWishlist(cartProduct)}> <FaHeart className={`${wishlist?.find(item => item.id === cartProduct.id) ? 'text-rose-500' : 'text-gray-300'}`} /> </button>
             </div>
         </div>

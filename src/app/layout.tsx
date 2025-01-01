@@ -30,7 +30,7 @@ export default async function RootLayout({
       <body className={`${roboto.className} flex-col flex min-h-screen`}>
         <CartProvider>
           <Navbar isLogged={User} />
-          <main className="flex flex-grow">
+          <main className="flex justify-center flex-grow">
             <Toaster />
             {children}
           </main>

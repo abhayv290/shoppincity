@@ -10,6 +10,7 @@ interface Iparams {
 }
 export default function Product({ params }: { params: Iparams }) {
     //Find the right Product 
+
     const product = products.find(item => item.id === params.productId)
 
 

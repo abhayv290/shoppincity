@@ -1,16 +1,20 @@
 'use client'
 import { createContext, useContext, useState, useEffect } from "react";
-import { cartProductType } from "../Components/ProductDetails";
+import { cartProductType, SetQty } from "../Components/ProductDetails";
+
 type CartContextProps = {
     cartQty: number;
 
     cartItem: cartProductType[];
     wishlist: cartProductType[];
+    paymentIntent: string | null;
     addToCart: (product: cartProductType) => void;
     handleQtyChange: (num: number, product: cartProductType) => void;
     removeItemsFromCart: (product: cartProductType) => void;
+    clearCart: () => void;
     addToWishlist: (product: cartProductType) => void;
     removeFromWishlist: (product: cartProductType) => void;
+    createPaymentIntent: (intent: string | null) => void;
 }
 
 const CartContext = createContext<CartContextProps | null>(null);
@@ -19,12 +23,15 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const [cartQty, setCartQty] = useState(0);
     const [cartItem, setCartItem] = useState<cartProductType[]>([]);
     const [wishlist, setWishlist] = useState<cartProductType[]>([])
+    const [paymentIntent, setPaymentIntent] = useState<string | null>(null);
 
 
     useEffect(() => {
         const localCartItems = localStorage.getItem('localCartItems');
         const localCartQty = localStorage.getItem('localCartQty');
-        const localwishlist = localStorage.getItem('localWishlist')
+        const localWishList = localStorage.getItem('localWishList')
+
+        const localPaymentIntent = localStorage.getItem('localPaymentIntent')
 
         if (localCartItems) {
             const parsedItems: cartProductType[] = JSON.parse(localCartItems);
@@ -34,9 +41,13 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             const parsedQty = parseInt(localCartQty, 10);
             setCartQty(parsedQty);
         }
-        if (localwishlist) {
-            const parsedWishlist: cartProductType[] = JSON.parse(localwishlist);
+        if (localWishList) {
+            const parsedWishlist: cartProductType[] = JSON.parse(localWishList);
             setWishlist(parsedWishlist)
+        }
+        if (localPaymentIntent) {
+            const parsedPaymentIntent: any = JSON.parse(localPaymentIntent);
+            setPaymentIntent(parsedPaymentIntent);
         }
     }, []);
 
@@ -105,7 +116,7 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
             if (!prev.find(item => item.id === product.id)) {
 
                 const newWishlist = [...prev, product]
-                localStorage.setItem('localWishlist', JSON.stringify(newWishlist))
+                localStorage.setItem('localWishList', JSON.stringify(newWishlist))
                 return newWishlist
             }
             return prev;
@@ -115,13 +126,23 @@ export function CartProvider({ children }: { children: React.ReactNode }) {
     const removeFromWishlist = (product: cartProductType) => {
         setWishlist(prev => {
             const newWishlist = prev.filter(item => item.id !== product.id);
-            localStorage.setItem('localWishlist', JSON.stringify(newWishlist));
+            localStorage.setItem('localWishList', JSON.stringify(newWishlist));
             return newWishlist;
         })
     }
-
+    //function to handle the payment 
+    const createPaymentIntent = (intent: string | null) => {
+        setPaymentIntent(intent);
+        localStorage.setItem('localPaymentIntent', JSON.stringify(intent));
+    }
+    const clearCart = () => {
+        setCartItem([]);
+        setCartQty(0);
+        localStorage.removeItem('localCartQty');
+        localStorage.removeItem('localCartItems');
+    }
     return (
-        <CartContext.Provider value={{ cartQty, cartItem, addToCart, handleQtyChange, removeItemsFromCart, wishlist, addToWishlist, removeFromWishlist }}>
+        <CartContext.Provider value={{ cartQty, clearCart, paymentIntent, createPaymentIntent, cartItem, addToCart, handleQtyChange, removeItemsFromCart, wishlist, addToWishlist, removeFromWishlist }}>
             {children}
         </CartContext.Provider>
     );

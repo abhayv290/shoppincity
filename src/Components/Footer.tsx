@@ -89,10 +89,10 @@ const Footer = () => {
 
                         <span className={`ml-3  text-xl ${oswald.className}`}>ShoppinCity</span>
                     </a>
-                    <p className="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">© 2024  —
+                    <div className="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">© 2024  —
                         <a href="https://twitter.com/abhayv90" className="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@abhayv290</a>
-                    </p>
-                    <span className="inline-flex text-2xl sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
+                    </div>
+                    <div className="inline-flex text-2xl sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
                         <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-transform hover:scale-110 hover:rotate-180 hover:text-blue-600">
                             <IoLogoFacebook />
                         </a>
@@ -105,7 +105,7 @@ const Footer = () => {
                         <a href='https://www.linkedin.in/in/abhayvii' target="_blank" rel="noopener noreferrer" className="ml-3 text-gray-400 transition-transform hover:text-blue-800 hover:scale-110 hover:rotate-180 hover:">
                             <FaLinkedinIn />
                         </a>
-                    </span>
+                    </div>
                 </div>
             </div>
         </footer>

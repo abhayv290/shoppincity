@@ -4,21 +4,19 @@ import { cartProductType } from '@/src/Components/ProductDetails';
 import Container from '@/src/Components/Container';
 import { useCart } from '@/src/hooks/useCart';
 import truncate from '@/src/utills/truncate';
-
 import priceCalc from '@/src/utills/priceCalc';
 import formatPrice from '@/src/utills/formatPrice';
-
 import Image from 'next/image';
 
-import { AiTwotoneDelete } from 'react-icons/ai';
-import { Router } from 'next/router';
 import { useRouter } from 'next/navigation';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { RiDeleteBin2Fill } from 'react-icons/ri';
+import Link from 'next/link';
+import { FaArrowLeftLong } from 'react-icons/fa6';
 
 
-export default function Cart() {
-    const { cartItem, cartQty, handleQtyChange, addToWishlist, removeItemsFromCart } = useCart();
+export default function Cart({ currUser }: { currUser: any }) {
+    const { cartItem, cartQty, handleQtyChange, addToWishlist, removeItemsFromCart, clearCart } = useCart();
 
     const router = useRouter();
     const [shippingCost, setShippingCost] = useState(40);
@@ -28,7 +26,7 @@ export default function Cart() {
     };
     const handleMoveToWishlist = (product: cartProductType) => {
         addToWishlist(product);
-        toast.success(product.name + 'moved to wishlist')
+        toast.success(truncate(product.name) + 'moved to wishlist')
         removeItemsFromCart(product);
     }
     return (
@@ -46,7 +44,7 @@ export default function Cart() {
                                 <h1 className="font-semibold  text-2xl">Shopping Cart</h1>
                                 <h2 className="font-semibold  text-2xl">{cartQty} Items</h2>
                             </div>
-                            {cartItem.map((items) => (<div key={items.id} className="flex items-strech py-1 sm:py-4 md:py-10 lg:py-8 border-t border-gray-50">
+                            {cartItem.map((items) => (<div key={items.id} className="flex items-stretch py-1 sm:py-4 md:py-10 lg:py-8 border-t border-gray-50">
                                 <div className="w-3/12 2xl:w-1/4 ">
                                     <Image src={items.selectImg.image} height={200} width={200} alt="Black Leather Purse" className="h-full w-full object-center object-contain block" />
                                     {/* <img src={items.selectImg.image} alt="Black Leather Purse" className="md:hidden  h-full object-center object-contain" /> */}
@@ -70,14 +68,15 @@ export default function Cart() {
                                 </div>
                             </div>))}
 
+                            <div className='flex justify-between items-baseline'>
 
-                            <a href="#" className="flex font-semibold text-indigo-600 text-sm mt-10">
-                                <svg className="fill-current mr-2 text-indigo-600 w-4" viewBox="0 0 448 512">
-                                    <path
-                                        d="M134.059 296H436c6.627 0 12-5.373 12-12v-56c0-6.627-5.373-12-12-12H134.059v-46.059c0-21.382-25.851-32.09-40.971-16.971L7.029 239.029c-9.373 9.373-9.373 24.569 0 33.941l86.059 86.059c15.119 15.119 40.971 4.411 40.971-16.971V296z" />
-                                </svg>
-                                Continue Shopping
-                            </a>
+                                <Link href="/" className="flex items-center font-semibold hover:text-green-400 active:text-green-600 text-indigo-600 text-sm mt-10">
+                                    <FaArrowLeftLong className="fill-current mr-2 hover:text-green-400 active:text-green-600 text-indigo-600 text-xl" />
+                                    Continue Shopping
+                                </Link>
+                                <button onClick={() => clearCart()} className='flex font-semibold text-indigo-600 text-sm mt-10 hover:text-rose-500 active:text-rose-700'>ClearCart</button>
+                            </div>
+
                         </div>
                         <div id="summary" className=" w-[90%]   sm:w-1/4   md:w-1/2 sm:px-8 py-10">
                             <h1 className="font-semibold text-2xl border-b pb-8">Order Summary</h1>
@@ -117,7 +116,7 @@ export default function Cart() {
                                     <span>Total cost</span>
                                     <span>{priceCalc(cartItem, shippingCost)}</span>
                                 </div>
-                                <button className="font-semibold bg-slate-500 py-3 rounded-sm shadow-sm shadow-slate-300 hover:bg-slate-700 text-sm text-white uppercase w-full">
+                                <button onClick={() => currUser ? router.push('/checkout') : router.push('/login')} className="font-semibold bg-slate-500 py-3 rounded-sm shadow-sm shadow-slate-300 hover:bg-slate-700 text-sm text-white uppercase w-full">
                                     Checkout
                                 </button>
                             </div>
