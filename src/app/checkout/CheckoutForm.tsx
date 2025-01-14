@@ -115,7 +115,7 @@ const CheckoutForm: React.FC<CheckOutProps> = ({ confirmationStatus }) => {
                 id="submit"
             >
                 <div
-                    className="lg:w-1/2 md:w-3/4 w-full mt-4 px-4 py-2 bg-slate-500 rounded-md hover:bg-violet-600 font-semibold hover:text-white"
+                    className="lg:w-1/2 md:w-3/4 w-full mt-4 px-4 py-2 bg-slate-500 rounded-md hover:bg-slate-700 hover:outline hover:outline-rose-200 active:outline-rose-400 active:bg-slate-900 font-semibold text-white"
                     id="button-text"
                 >
                     {isLoading ? <SpinWheel /> : "Pay now"}

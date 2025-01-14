@@ -1,7 +1,8 @@
 import React from 'react'
 import { FaLinkedinIn } from 'react-icons/fa'
-import { IoLogoFacebook, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5'
+import { IoLogoFacebook, IoLogoGithub, IoLogoInstagram, IoLogoTwitter } from 'react-icons/io5'
 import { Oswald } from 'next/font/google'
+import { FaXTwitter } from 'react-icons/fa6'
 const oswald = Oswald({ subsets: ['latin'], weight: '500' })
 const Footer = () => {
     return (
@@ -90,14 +91,14 @@ const Footer = () => {
                         <span className={`ml-3  text-xl ${oswald.className}`}>ShoppinCity</span>
                     </a>
                     <div className="text-sm text-gray-400 sm:ml-6 sm:mt-0 mt-4">© 2024  —
-                        <a href="https://twitter.com/abhayv90" className="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@abhayv290</a>
+                        <a href="https://github.com/abhayv290" className="text-gray-500 ml-1" target="_blank" rel="noopener noreferrer">@abhayv290</a>
                     </div>
                     <div className="inline-flex text-2xl sm:ml-auto sm:mt-0 mt-4 justify-center sm:justify-start">
-                        <a href='https://www.facebook.com' target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-transform hover:scale-110 hover:rotate-180 hover:text-blue-600">
-                            <IoLogoFacebook />
+                        <a href='https://x.com/abhayv290' target="_blank" rel="noopener noreferrer" className="text-gray-400 transition-transform hover:scale-110 hover:rotate-180 hover:text-blue-600">
+                            <FaXTwitter />
                         </a>
-                        <a href='https://www.X.com/abhayv290' target="_blank" rel="noopener noreferrer" className="ml-3 text-gray-400 transition-transform hover:scale-110 hover:rotate-180 hover:text-blue-300 hover:">
-                            <IoLogoTwitter />
+                        <a href='https://www.github.com/abhayv290' target="_blank" rel="noopener noreferrer" className="ml-3 text-gray-400 transition-transform hover:scale-110 hover:rotate-180 hover:text-blue-300 hover:">
+                            <IoLogoGithub />
                         </a>
                         <a href='https://www.instagram.com/abhayvii' target="_blank" rel="noopener noreferrer" className="ml-3 text-gray-400 transition-transform hover:text-pink-700 hover:scale-110 hover:rotate-180 hover:">
                             <IoLogoInstagram />

@@ -37,7 +37,6 @@ export async function POST(req: Request) {
             status: 'pending',
             deliveryStatus: 'pending',
             products: items,
-
             paymentId: payment_intent_id || '',
         };
 

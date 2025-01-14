@@ -60,8 +60,8 @@ const RegisterForm: React.FC<PropsType> = ({ isLogged }) => {
             <Input type='password' id='password' disabled={isLoading} errors={errors} register={register} required={true} label='Password' />
             <button onClick={handleSubmit(onSubmit)} className='px-4 p-2 min-w-48 text-blue-50 font-semibold bg-slate-500 hover:bg-slate-700 rounded-md shadow-md hover:shadow-slate-200 active:bg-slate-900' type='button' >{isLoading ? 'Loading' : 'Sign Up'}</button>
             <div className='flex justify-between w-full text-slate-800'>
-                <span>Already Registered: </span>
-                <span className='font-semibold cursor-pointer hover:underline ' onClick={() => router.push('/login')}>Login Here</span>
+                <span className=''>Already Registered? </span>
+                <span className='font-semibold cursor-pointer hover:underline active:text-blue-500' onClick={() => router.push('/login')}>Login Here</span>
             </div>
 
         </>

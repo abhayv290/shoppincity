@@ -72,8 +72,7 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
 
     const handleCartButton = (cartProduct: cartProductType) => {
         if (cartItem?.find(item => item.id === cartProduct.id && item.selectImg.color === cartProduct.selectImg.color)) {
-            //Check if the item is already in the cart
-            // toast.error(`${truncate(cartProduct.name)} already in the cart`)
+
             router.push('/cart');
         } else {
             addToCart(cartProduct);
@@ -100,8 +99,8 @@ const ProductDetails: React.FC<productDetailsProps> = ({ product }) => {
                 <div className='text-base  text-justify'>{product.description}</div>
 
                 <hr className='mt-2 mb-2' />
-                <div><span className='font-semibold '>CATEGORY: </span> Mobile</div>
-                <div><span className='font-semibold '>BRAND: </span> Apple</div>
+                <div><span className='font-semibold '>CATEGORY: </span> {product.category}</div>
+                <div><span className='font-semibold '>BRAND: </span> {product.brand}</div>
                 <div className={product.inStock ? 'text-teal-400' : 'text-red-500'}>{product.inStock ? 'in Stock' : 'Out of Stock'}</div>
                 <hr className='mt-2 mb-2' />
                 <SetColor images={product.images} cartProduct={cartProduct} handleColor={handleColor} />

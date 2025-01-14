@@ -29,8 +29,10 @@ export async function getUser() {
                 email: true,
                 name: true,
                 image: true,
+                role: true,
                 createdAt: true,
                 updatedAt: true,
+                order: true,
                 emailVerified: true,
             },
         });

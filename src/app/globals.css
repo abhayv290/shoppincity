@@ -7,6 +7,27 @@
         transform: rotate(360deg);
     }
 }
+
 .spinner {
     animation: spin 1.5s ease-in-out infinite;
+}
+
+.custom-scrollbar-hide {
+    max-width: 100%;
+    /* Ensure it doesn't exceed the container width */
+    overflow-x: auto;
+    /* Horizontal scrolling only */
+    -ms-overflow-style: none;
+    /* For Internet Explorer and Edge */
+    scrollbar-width: none;
+    /* For Firefox */
+}
+
+.custom-scrollbar-hide::-webkit-scrollbar {
+    display: none;
+    /* For Chrome, Safari, and Opera */
+}
+
+* {
+    background-color: slate;
 }

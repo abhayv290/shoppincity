@@ -14,6 +14,9 @@ const roboto = Roboto({ subsets: ["latin"], weight: '400' });
 export const metadata: Metadata = {
   title: "Shop for Electronics, Fashion, and More! ShoppinCity",
   description: "Find a wide range of products from electronics to fashion, all at unbeatable prices. Enjoy fast shipping, secure payments, and excellent customer service. Shop now and experience the convenience of ShoppinCity!",
+  icons: {
+    icon: '/favicon.webp'
+  }
 };
 
 
@@ -22,7 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const User = await getUser();
+  const User: any = await getUser();
 
 
   return (
@@ -30,7 +33,7 @@ export default async function RootLayout({
       <body className={`${roboto.className} flex-col flex min-h-screen`}>
         <CartProvider>
           <Navbar isLogged={User} />
-          <main className="flex justify-center flex-grow">
+          <main className="flex  flex-grow">
             <Toaster />
             {children}
           </main>

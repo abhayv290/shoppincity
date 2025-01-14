@@ -50,7 +50,7 @@ const LoginForm: React.FC<loginPropType> = ({ isLogged }) => {
             <button onClick={handleSubmit(onSubmit)} className='px-4 p-2 min-w-48 text-blue-50 font-semibold bg-slate-500 hover:bg-slate-700 rounded-md shadow-md hover:shadow-slate-200 active:bg-slate-900' type='button' >{isLoading ? 'Loading' : 'Login'}</button>
             <div className='flex justify-between w-full text-slate-800'>
                 <span>New To ShoppinCity? </span>
-                <span className='font-semibold cursor-pointer hover:underline ' onClick={() => router.push('/register')}>Create an Account</span>
+                <span className='font-semibold cursor-pointer hover:underline hover:text-blue-500' onClick={() => router.push('/register')}>Create an Account</span>
             </div>
 
         </>

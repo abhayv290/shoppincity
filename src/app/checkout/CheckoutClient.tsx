@@ -6,12 +6,11 @@ import { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
-import CompletePage from './CompletePage';
 import CheckoutForm from './CheckoutForm';
 import SpinWheel from '@/src/Components/SpinWheel';
 
 
-const stripePromise = loadStripe("pk_test_51QaDgtD1PHn7Hc72Xb3sbCIXq4V7cmxJnOJpf8JyD0VS38RM3l3u0JwwOKpp779C6vlMoc1TVAMekggVKVlzBONf00m2aJ9EuJ");
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_PUB_API_KEY as string);
 
 const CheckoutClient = () => {
     const { cartItem, paymentIntent, createPaymentIntent } = useCart();
