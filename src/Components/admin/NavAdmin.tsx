@@ -16,7 +16,7 @@ const NavAdmin = () => {
 
     const path = usePathname();
     const navItem: navItemProps[] = [
-        { icon: MdDashboardCustomize, label: 'Dashboard', route: 'dashboard' },
+        { icon: MdDashboardCustomize, label: 'Dashboard', route: '' },
         { icon: MdLibraryAdd, label: 'Add Products', route: 'add-products' },
         { icon: AiOutlineProduct, label: 'Manage Products', route: 'manage-products' },
         { icon: BsDatabaseAdd, label: 'Manage Orders', route: 'manage-orders' }

@@ -62,10 +62,11 @@ const AddRating: React.FC<ratingProps> = ({ product, user }) => {
 
     }
     return (
+
         <div className="flex flex-col max-w-[500px] items-start  gap-4">
             <h2 className="font-semibold text-xl md:text-2xl text-start">Rate This Product</h2>
             <Rating onChange={(e, newValue) => setCustomValue('rating', newValue)} />
-            <TextArea label="reply" id="comment" register={register} disabled={isLoading} required errors={errors} />
+            <TextArea label="write a review" id="comment" register={register} disabled={isLoading} required errors={errors} />
             <button onClick={handleSubmit(onSubmit)} className="px-4 py-1 font-medium text-base md:text-xl rounded-md outline-none hover:outline hover:outline-rose-200 active:outline-rose-500  border-slate-500 border bg-slate-700 hover:bg-slate-800 text-white w-32 md:w-48" type="button">Submit</button>
 
         </div>

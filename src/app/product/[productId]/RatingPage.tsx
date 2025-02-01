@@ -12,7 +12,7 @@ interface RatingProps {
     product: any
 }
 const RatingPage: React.FC<RatingProps> = ({ product }) => {
-
+    console.log(product.reviews);
     return (
         <div>
             <h1 className='font-bold text-gray-700 text-2xl'>Product Reviews</h1>

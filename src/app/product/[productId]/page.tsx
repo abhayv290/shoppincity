@@ -23,8 +23,11 @@ export default async function Product({ params }: { params: ProductParams }) {
                 <ProductDetails product={product} />
                 <div className='flex flex-col w-full mt-32 gap-4'>
                     <hr />
-                    <AddRating product={product} user={user} />
-                    <RatingPage product={product} />
+                    {user && <AddRating product={product} user={user} />}
+                    {
+                        product.reviews.length !== 0 ? <RatingPage product={product} /> : null
+
+                    }
                 </div>
             </Container>
         </div>

@@ -27,7 +27,7 @@ const Categories = () => {
     return (
         <div className='bg-white w-full'>
             <Container>
-                <div className="pt-4 flex flex-row w-full  items-center justify-start overflow-x-auto">
+                <div className="pt-4 flex justify-start flex-row w-full  items-center lg:justify-center overflow-x-auto">
                     {categories.map(item => (
                         <div key={item.label} onClick={() => handleRoute(item.label)} className={`flex items-center  justify-center text-center p-2 px-4 gap-1 border-b-[3px]   hover:text-slate-900 ${item.label === selected ? 'text-rose-500 border-rose-400' : 'text-slate-500 border-slate-200'} transition cursor-pointer`}>
                             <h4 className='font-semibold text-nowrap text-base'>{item.label}</h4>
