@@ -3,6 +3,7 @@ import { getUser } from '@/src/actions/getUser';
 import Container from '@/src/Components/Container';
 import formatPrice from '@/src/utills/formatPrice';
 import truncate from '@/src/utills/truncate'
+import Image from 'next/image';
 import Link from 'next/link';
 
 
@@ -81,7 +82,7 @@ const page = async () => {
                             <ul className="space-y-2">
                                 {order.products.map((product) => (
                                     <li key={product.id} className="flex items-center gap-4">
-                                        <img
+                                        <Image width={500} height={500}
                                             src={product.selectImg.image}
                                             alt={product.brand}
                                             className="w-16 h-16 object-contain rounded"

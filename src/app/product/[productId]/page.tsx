@@ -5,14 +5,18 @@ import RatingPage from './RatingPage'
 import getProducts from '@/src/actions/getProduct'
 import AddRating from './AddRating'
 import { getUser } from '@/src/actions/getUser'
-
-interface ProductParams {
+import { ProductParams } from '@/src/actions/getProduct'
+type ProductParam = Promise<{
     productId?: string
-}
-export default async function Product({ params }: { params: ProductParams }) {
-    const products = await getProducts({ category: null });
+}>
+export default async function Product({ params }: { params: ProductParam }) {
     const { productId } = await params;
-    const user: any = await getUser();
+    // Fetch products and user in parallel
+    const [products, User] = await Promise.all([
+        getProducts({ category: null }),
+        getUser(),
+    ]);
+
     const product: any = products.find(item => item.id === productId)
 
 
@@ -23,7 +27,7 @@ export default async function Product({ params }: { params: ProductParams }) {
                 <ProductDetails product={product} />
                 <div className='flex flex-col w-full mt-32 gap-4'>
                     <hr />
-                    {user && <AddRating product={product} user={user} />}
+                    {User && <AddRating product={product} user={User} />}
                     {
                         product.reviews.length !== 0 ? <RatingPage product={product} /> : null
 

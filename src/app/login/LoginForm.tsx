@@ -9,9 +9,9 @@ import toast from 'react-hot-toast';
 
 import { FcGoogle } from 'react-icons/fc';
 import { MdAccountCircle } from 'react-icons/md';
-import { safeUser } from '@/src/type';
+import { SafeUser } from '@/src/type';
 interface loginPropType {
-    isLogged: safeUser | null
+    isLogged: SafeUser | null
 }
 
 const LoginForm: React.FC<loginPropType> = ({ isLogged }) => {

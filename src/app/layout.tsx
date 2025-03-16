@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter, Roboto } from "next/font/google";
+import { Roboto } from "next/font/google";
 import './globals.css';
 
 import { CartProvider } from "../hooks/useCart";
@@ -25,7 +25,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const User: any = await getUser();
+  const User = await getUser();
 
 
   return (

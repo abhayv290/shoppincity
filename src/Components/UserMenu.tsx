@@ -3,13 +3,13 @@ import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 import React, { useState, useEffect } from 'react';
 import { PiUserListBold } from 'react-icons/pi';
-import { safeUser } from '../type';
+import { SafeUser } from '../type';
 import Image from 'next/image';
 import { MdAccountCircle } from 'react-icons/md';
 
 
 interface propType {
-    isLogged: safeUser | null;
+    isLogged: SafeUser | null;
 }
 const UserMenu: React.FC<propType> = ({ isLogged }) => {
     const [isOpen, setIsOpen] = useState(false);

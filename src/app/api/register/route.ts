@@ -2,7 +2,7 @@
 import prisma from '@/src/libs/prismadb'
 import { NextResponse } from 'next/server'
 import bcrypt from 'bcryptjs'
-export async function POST(req: Request, res: Response) {
+export async function POST(req: Request) {
     const { name, email, password } = await req.json();
     if (!req.body) {
         throw new Error('Invalid Credentials');

@@ -9,6 +9,8 @@ import Actions from './Actions';
 import axios from 'axios';
 import toast from 'react-hot-toast';
 import { useRouter } from 'next/navigation';
+import Image from 'next/image';
+import { FaRegEye } from 'react-icons/fa6';
 
 
 interface ManageProductsProps {
@@ -99,7 +101,7 @@ const ManageProducts: React.FC<ManageProductsProps> = ({ products }) => {
             sortable: false,
             renderCell: (params) => (
                 <div className="flex justify-center items-center">
-                    <img
+                    <Image width={500} height={500}
                         src={params.value || '/placeholder.jpg'}
                         alt="Product Preview"
                         className="w-12 h-12 rounded-lg object-cover border border-gray-200"
@@ -114,8 +116,9 @@ const ManageProducts: React.FC<ManageProductsProps> = ({ products }) => {
             width: 250,
 
             renderCell: (params) => (
-                <div className="flex justify-between items-center gap-3 w-full">
+                <div className="flex justify-between items-center gap-2 w-full">
                     <Actions Icon={MdSync} disabled={false} onClick={() => handleStock(params.row.id, params.row.inStock)} />
+                    <Actions Icon={FaRegEye} disabled={false} onClick={() => router.push('http://localhost:3000/product/' + params.row.id)} />
                     <Actions Icon={MdEdit} disabled={true} onClick={() => { }} />
                     <Actions Icon={MdDelete} disabled={false} onClick={() => handleDelete(params.row.id)} />
                 </div>

@@ -5,7 +5,7 @@ import FormWrap from '@/src/Components/FormWrap'
 import { getUser } from '@/src/actions/getUser'
 
 export default async function Register() {
-    const User = await getUser();
+    const User: any = await getUser();
     return (
 
         <Container>

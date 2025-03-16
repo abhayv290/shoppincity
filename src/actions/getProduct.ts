@@ -1,13 +1,13 @@
 import prisma from '@/src/libs/prismadb';
 
-export interface ProductParams {
+export type ProductParams = {
     category?: string | null;
     search?: string | null;
 }
 
 export default async function getProducts(params: ProductParams) {
     try {
-        const { category, search } = await params;
+        const { category, search } = params;
 
         // Simplify search initialization
         const searchString = search || '';

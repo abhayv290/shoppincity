@@ -1,14 +1,13 @@
 "use client"; //to ensure the components is rendered as client component
 import React, { useState } from 'react';
 import { Oswald, Roboto } from 'next/font/google';
-import Image from 'next/image';
 import Link from 'next/link';
 import { IoHeart, IoSearch } from "react-icons/io5";
 import { FaShoppingCart } from 'react-icons/fa';
 import { useCart } from '../hooks/useCart';
 import { usePathname, useRouter } from 'next/navigation'
 import UserMenu from './UserMenu';
-import { safeUser } from '../type';
+import { SafeUser } from '../type';
 import { FieldValues, useForm, SubmitHandler } from 'react-hook-form';
 
 const oswald = Oswald({ subsets: ['latin'], weight: '500' });
@@ -16,7 +15,7 @@ const roboto = Roboto({ subsets: ['latin'], weight: '400' });
 
 
 interface propType {
-    isLogged: safeUser | null;
+    isLogged: SafeUser | null;
 }
 const Navbar: React.FC<propType> = ({ isLogged }) => {
     const [searchClick, setSearchClick] = useState<boolean>(false);

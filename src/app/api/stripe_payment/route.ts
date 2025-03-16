@@ -5,7 +5,7 @@ import { cartProductType } from '@prisma/client';
 import { getUser } from '@/src/actions/getUser';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY as string, {
-    apiVersion: '2024-12-18.acacia',
+    apiVersion: '2025-02-24.acacia',
 });
 
 // Calculate total amount from the cart items

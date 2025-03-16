@@ -15,9 +15,10 @@ import Categories from '../Components/Categories'
 interface ParamProps {
   searchParams: ProductParams
 }
-export default async function Home({ searchParams }: ParamProps) {
-
-  const products = await getProducts(searchParams);
+type searchParam = Promise<{ category?: string | null, search?: string | null }>
+export default async function Home({ searchParams }: { searchParams: searchParam }) {
+  const { category, search } = await searchParams;
+  const products = await getProducts({ category, search });
   return (
     <div className='mx-auto w-full md:w-[95%] '>
       <Container>

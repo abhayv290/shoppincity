@@ -64,7 +64,7 @@ const CheckoutClient = () => {
             });
 
         return () => controller.abort();
-    }, [cartItem]);
+    }, [cartItem, createPaymentIntent, paymentIntent, router]);
     const confirmationStatus = (value: boolean) => {
         setConfirmed(value);
         !value && toast.error('try again')

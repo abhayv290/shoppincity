@@ -5,12 +5,12 @@ import { signIn } from 'next-auth/react';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react'
 import { useForm, type FieldValues, type SubmitHandler } from 'react-hook-form';
-import toast, { Toaster } from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import { FcGoogle } from 'react-icons/fc';
 import { MdAccountCircle } from 'react-icons/md';
-import { safeUser } from '@/src/type';
+import { SafeUser } from '@/src/type';
 interface PropsType {
-    isLogged: safeUser | null;
+    isLogged: SafeUser | null;
 }
 
 const RegisterForm: React.FC<PropsType> = ({ isLogged }) => {

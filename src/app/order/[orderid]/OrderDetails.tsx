@@ -89,7 +89,7 @@ const OrderDetails: React.FC<OrderDetailProp> = ({ order }) => {
                                             alt={item.brand}
                                         />
                                         <div className="flex flex-col">
-                                            <h5 className="font-medium text-lg truncate">{truncate(item.name, 20)}</h5>
+                                            <h5 className="font-medium text-lg truncate">{truncate(item.name)}</h5>
                                             <p className="text-sm text-gray-500 whitespace-nowrap">{item.selectImg.color}</p>
                                             <p className="text-sm text-gray-500">{item.category}</p>
                                         </div>

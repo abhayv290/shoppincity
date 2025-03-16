@@ -54,7 +54,7 @@ const AddFormProduct = () => {
             setImages(null);
             setIsCreated(false);
         }
-    })
+    }, [isCreated, reset])
     const [selected, isSelected] = useState<boolean>(false);
     const addImage = (val: ImageType) => {
         setImages((prev) => {
@@ -290,9 +290,8 @@ const SelectImage: React.FC<SelectImageProps> = ({ item, handleFileChange }) => 
         if (item.length > 0) {
             handleFileChange(item[0]);
         }
-    }, [])
+    }, [handleFileChange])
     const { getRootProps, getInputProps, isDragActive } = useDropzone({ onDrop, accept: { 'image/*': ['.jpeg', '.png', '.webp'] } })
-
     return (
         <div  {...getRootProps()} className='border-2 border=slate-400 border-dashed cursor-pointer text-base text-slate-500 flex items-center justify-center font-medium'>
             <input {...getInputProps()} />

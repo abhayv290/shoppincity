@@ -1,6 +1,6 @@
 'use client'
 import TextArea from "@/src/Components/inputs/TextArea";
-import { safeUser } from "@/src/type";
+import { SafeUser } from "@/src/type";
 import { Rating } from "@mui/material";
 import { Order, Product, Review } from "@prisma/client";
 import axios from "axios";
@@ -13,9 +13,7 @@ interface ratingProps {
     product: (Product & {
         review: Review;
     });
-    user: (safeUser & {
-        orders: Order
-    }) | null
+    user: SafeUser | null
 }
 
 const AddRating: React.FC<ratingProps> = ({ product, user }) => {
@@ -34,7 +32,7 @@ const AddRating: React.FC<ratingProps> = ({ product, user }) => {
         })
     }
     const onSubmit: SubmitHandler<FieldValues> = async (data) => {
-        console.log(data);
+
         setIsLoading(true);
 
         if (user && product) {
@@ -44,14 +42,14 @@ const AddRating: React.FC<ratingProps> = ({ product, user }) => {
                 product: product
             }
             const res = await axios.post('/api/product/reviews', reviews);
-            console.log(res);
+
             if (res.status === 200 && res.data.status === 200) {
                 toast.success('You rated this product ' + data.rating + '⭐')
                 reset();
                 setIsLoading(false);
                 router.refresh();
             } else if (res.data.status === 403) {
-                toast.success('Order the product first')
+                toast.error('Order the product first')
             } else {
                 toast.error('Try Again')
             }
